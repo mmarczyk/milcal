@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate PNG icons from SVG
+        run: |
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          rsvg-convert -w 192 -h 192 icons/icon-192.svg -o icons/icon-192.png
+          rsvg-convert -w 512 -h 512 icons/icon-512.svg -o icons/icon-512.png
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
